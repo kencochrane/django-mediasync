@@ -287,6 +287,37 @@ time-based cache buster value. Each worker/thread will probably have a slightly
 different value for datetime.now(), which means your users will find themselves
 having cache misses randomly from page to page. 
 
+Amazon CloudFront
+-----------------
+
+::
+
+    MEDIASYNC['BACKEND'] = 'mediasync.backends.cloudfront'
+
+Settings
+~~~~~~~~
+
+In order to use CloudFront you will need to create your distribution and then
+remember the domain name it gives you. You will still need to set all of the same
+AWS settings (AWS_KEY, AWS_SECRET, AWS_BUCKET , etc. ) just like you are using S3,
+but you will need to add a new one called CLOUDFRONT_DOMAIN_NAME. 
+
+    MEDIASYNC = {
+    	'AWS_KEY': "s3_key",
+    	'AWS_SECRET': "s3_secret",
+    	'AWS_BUCKET': "bucket_name",
+    	'CLOUDFRONT_DOMAIN_NAME': "blahblahblah.cloudfront.net"
+    }
+
+Tips
+~~~~
+
+The CloudFront backend lacks support for the following features:
+
+* streaming support
+* invalidating objects from CloudFront CDN cache
+
+
 Rackspace Cloud Files
 ---------------------
 
