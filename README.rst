@@ -300,7 +300,7 @@ Settings
 In order to use CloudFront you will need to create your distribution and then
 remember the domain name it gives you. You will still need to set all of the same
 AWS settings (AWS_KEY, AWS_SECRET, AWS_BUCKET , etc. ) just like you are using S3,
-but you will need to add a new one called CLOUDFRONT_DOMAIN_NAME. 
+but you will need to add a new one called CLOUDFRONT_DOMAIN_NAME::
 
     MEDIASYNC = {
     	'AWS_KEY': "s3_key",
