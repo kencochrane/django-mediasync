@@ -1,4 +1,5 @@
 from mediasync.backends.s3 import Client as S3Client
+from mediasync.conf import msettings
 
 class Client(S3Client):
     """
@@ -14,6 +15,7 @@ class Client(S3Client):
         super(Client, self).__init__(*args, **kwargs)
         
         self.cloudfront_domain_name = msettings['CLOUDFRONT_DOMAIN_NAME']
+        self.aws_prefix = msettings.get('AWS_PREFIX', '').strip('/')
         
         
     def remote_media_url(self, with_ssl=False):
